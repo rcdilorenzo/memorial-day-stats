@@ -10,13 +10,19 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>Celebrate Memorial Day</h1>
-    <div id="app"></div>
-
     <script src="app.js"></script>
     <script>
-      var node = document.getElementById('app');
-      var app = Elm.Main.embed(node);
+      app = Elm.Main.fullscreen();
+
+      app.ports.save.subscribe(function(model) {
+        var json = JSON.stringify(model);
+        localStorage.setItem('model', json);
+      });
+
+      var saved = JSON.parse(localStorage.getItem('model'));
+      setTimeout(function() {
+        app.ports.storage.send(saved);
+      }, 1);
     </script>
   </body>
 </html>
