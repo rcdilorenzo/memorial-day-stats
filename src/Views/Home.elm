@@ -9,4 +9,6 @@ import Actions exposing (..)
 
 content : Model -> Html Action
 content model =
-  a [ class "center-button", onClick Increment ] [ text "+" ]
+  div [ class "button-container" ]
+    [ span [] [ a [ class "center-button", onClick Increment ] [ text "+" ] ]
+    ]

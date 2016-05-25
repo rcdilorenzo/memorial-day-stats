@@ -1,0 +1,64 @@
+body {
+  padding: 50px;
+  margin: 0;
+  margin: 0;
+  height: auto;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+body > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.center-button {
+  display: block;
+  background-color: #178CFF;
+  width: 100%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  color: white;
+  font-size: 20em;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+.navigation {
+  display: none;
+}
+.stats {
+  width: 100%;
+  font-size: 2em;
+  text-align: center;
+  flex-wrap: wrap;
+}
+.stats-left {
+  width: 50%;
+  float: left;
+}
+.stats-right {
+  width: 50%;
+  float: right;
+}
+.btn {
+  width:100%;
+  height: 50%;
+  display: block;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  color: white;
+  font-size: 10em;
+  text-align: center;
+  vertical-align: middle;
+}
+.btn-green {
+  background-color: green;
+}
+.btn-red {
+  background-color: red;
+}
