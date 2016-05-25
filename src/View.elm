@@ -43,17 +43,17 @@ layout title model content =
 
 navigationView : String -> Html Action
 navigationView title =
-  div [ class "navigation" ]
-    [ div [ class "navigation-left" ]
+  div [ class "navigation-container white" ]
+    [ div [ class "navigation-item navigation-icon" ]
       [ a [ onClick RouteToHome ] [ i [ class "fa fa-home" ] [] ] ]
-    , h1 [ class "navigation-title" ] [ text title ] ]
+    , h1 [ class "navigation-item navigation-title" ] [ text title ] ]
 
 
 footerView : String -> String -> Html Action
 footerView left right =
-  footer [ class "stats" ]
-    [ div [ class "stats-left" ] [ text left ]
-    , div [ class "stats-right" ] [ text right ]
+  footer [ class "stats-container" ]
+    [ div [ class "stats-item stats-cars" ] [ text left ]
+    , div [ class "stats-item stats-people" ] [ text right ]
     ]
 
 notFound : Html Action
@@ -67,5 +67,3 @@ notFound =
 carsLabel : Int -> String
 carsLabel count =
   (toString count) ++ " Cars"
-
-

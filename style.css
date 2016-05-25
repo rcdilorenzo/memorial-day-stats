@@ -1,72 +1,105 @@
-body {
+/*  DEFAULTS  */
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  height: 100%;
-  display: block;
-  font-family: Verdana;
-  color: white;
 }
-body > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+.green {
+  background-color: #468966;
 }
-.button-container {
-  display: block;
+.red {
+  background-color: #B64926;
+}
+.blue {
   background-color: #178CFF;
+}
+.yellow {
+  background-color: #FFB03B;
+}
+.white {
+  background-color: #F6F6F6;
+}
+body {
+  font-family: Verdana;
+  color: #F6F6F6;
+}
+body > div > * {
   position: absolute;
-  bottom: 0;
-  top: 0;
   left: 0;
   right: 0;
-  color: white;
-  font-size: 20em;
-  text-align: center;
-  vertical-align: middle;
-  z-index: 1;
 }
-.button-span {
+
+/*  NAVIGATION  */
+
+.navigation-container {
+  height: 10vh;
+  color: black;
+  display: flex;
+}
+.navigation-item {}
+.navigation-icon {
+  font-size: 35px;
+  padding: 10px 5px 10px 15px;
+  opacity: 0.5;
+}
+.navigation-title {
+  font-size: 25px;
+  padding: 10px 15px 10px 5px;
+  line-height: 2;
+  opacity: 0.5;
+}
+
+/*  BUTTONS  */
+
+.btn-container {
+  height: 90vh;
+  bottom: 0;
+  text-align: center;
+}
+.add-btn-container {}
+.attended-btn-container {
+  display: flex;
+}
+.btn-span {
   line-height: 80vh;
 }
-.navigation {
-  display: none;
-}
-.stats {
-  width: 100%;
-  font-size: 2em;
-  text-align: center;
-  flex-wrap: wrap;
-  padding: 50px 0;
+.add-btn-span {}
+.attended-btn-span {}
+.add-btn {
+  font-size: 20em;
   position: absolute;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 2;
 }
-.stats-left {
-  width: 50%;
-  float: left;
-}
-.stats-right {
-  width: 50%;
-  float: right;
-}
-.btn {
-  width:100%;
-  height: 50vh;
-  display: block;
-  color: white;
+.attended-btn {
+  height: 45vh;
   font-size: 10em;
+  z-index: 3;
+  line-height: 40vh;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.attended-btn-yes {
+  top: 0;
+}
+.attended-btn-no {
+  bottom: 0;
+}
+
+/*  STATISTICS  */
+
+.stats-container {
+  font-size: 2em;
   text-align: center;
-  vertical-align: middle;
-  z-index: 5;
-  position: relative;
-  line-height: 50vh;
+  display: flex;
+  padding: 50px 0;
+  bottom: 0;
+  justify-content: space-around;
 }
-.btn-green {
-  background-color: green;
-}
-.btn-red {
-  background-color: red;
-}
+.stats-item {}
+.stats-cars {}
+.stats-people {}
