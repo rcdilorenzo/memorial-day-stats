@@ -1,13 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  height: auto;
+  height: 100%;
   display: block;
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
   font-family: Verdana;
   color: white;
 }
