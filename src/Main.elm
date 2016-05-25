@@ -1,87 +1,79 @@
 port module Main exposing (..)
 
-import Html exposing (Html, button, div, text, h1, footer, a)
 import Html.App as Html
-import Html.Attributes exposing (..)
-import Html.Events exposing (onClick)
 import Json.Decode as Decode
+import Maybe exposing ( Maybe(..) )
+
+import Model exposing (..)
+import Actions exposing (..)
+
+import View
 
 main =
   Html.program
     { init = init
-    , view = view
+    , view = View.render
     , update = update
     , subscriptions = subscriptions
     }
 
 
-type alias Model =
-  { count: Int
-  }
-
-
 init : (Model, Cmd msg)
 init =
-  ( Model 0, Cmd.none )
-
-
-type Msg
-  = Increment
-  | Decrement
-  | Load Model
+  ( Model 0 "" Nothing [], Cmd.none )
 
 
 -- UPDATE
 
 port save : Model -> Cmd msg
+port location : String -> Cmd msg
 
 
-update : Msg -> Model -> (Model, Cmd Msg)
+update : Action -> Model -> (Model, Cmd Action)
 update msg model =
   case msg of
-    Increment ->
-      persist (Model (model.count + 1))
-
-    Decrement ->
-      persist (Model (model.count - 1))
-
     Load updated ->
       ( updated, Cmd.none )
 
+    Increment ->
+      { model |
+        count = model.count + 1,
+        currentRow = (Just defaultRow)
+      }
+        |> changeRoute "#/have_attended"
+        |> persist2
 
-persist : Model -> (Model, Cmd Msg)
+    RouteToHome ->
+      {model | currentRow = Nothing}
+        |> changeRoute ""
+        |> persist2
+
+    UpdateRow (UpdateAttendedPreviously bool) ->
+      let
+          row = (Maybe.withDefault defaultRow model.currentRow)
+          updatedRow = {row | attendedPreviously = bool}
+      in
+         {model | currentRow = (Just updatedRow)}
+           |> changeRoute ""
+           |> persist2
+
+    UpdateRow _ ->
+      ( model, Cmd.none )
+
+
+changeRoute : String -> Model -> (Model, Cmd Action)
+changeRoute newRoute model =
+  ( {model | route = newRoute}, location newRoute )
+
+
+persist2 : (Model, Cmd Action) -> (Model, Cmd Action)
+persist2 (model, cmd) =
+  ( model, Cmd.batch [ cmd, (save model) ] )
+
+
+persist : Model -> (Model, Cmd Action)
 persist model =
   ( model, save model )
-
-
--- VIEW
-
-carsLabel : Int -> String
-carsLabel count =
-  (toString count) ++ " Cars"
-
-
-view : Model -> Html Msg
-view model =
-  div []
-    [ navigationView "Celebrate Memorial Day"
-    , a [ class "center-button", onClick Increment ] [ text "+" ]
-    , footerView (carsLabel model.count) "_ People"
-    ]
-
-
-navigationView : String -> Html Msg
-navigationView title =
-  div [ class "navigation" ]
-    [ h1 [ class "navigation-title" ] [ text title ] ]
-
-
-footerView : String -> String -> Html Msg
-footerView left right =
-  footer [ class "stats" ]
-    [ div [ class "stats-left" ] [ text left ]
-    , div [ class "stats-right" ] [ text right ]
-    ]
 
 
 -- SUBSCRIPTIONS
@@ -90,7 +82,7 @@ footerView left right =
 port storage : (Model -> msg) -> Sub msg
 
 
-subscriptions : Model -> Sub Msg
+subscriptions : Model -> Sub Action
 subscriptions model =
   storage Load
 

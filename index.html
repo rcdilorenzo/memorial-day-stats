@@ -10,19 +10,36 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <script src="https://use.fontawesome.com/73f6abe289.js"></script>
     <script src="app.js"></script>
     <script>
       app = Elm.Main.fullscreen();
 
-      app.ports.save.subscribe(function(model) {
+      var save = function (model) {
         var json = JSON.stringify(model);
         localStorage.setItem('model', json);
+      };
+
+      app.ports.save.subscribe(save);
+
+      app.ports.location.subscribe(function(route) {
+        history.replaceState({}, "", route);
       });
 
-      var saved = JSON.parse(localStorage.getItem('model'));
-      setTimeout(function() {
-        app.ports.storage.send(saved);
-      }, 1);
+      var getStored = function() {
+        var stored = JSON.parse(localStorage.getItem('model'));
+        if (stored) {
+          stored.route = location.hash;
+          save(stored);
+        }
+        return stored;
+      };
+
+      window.onhashchange = function() {
+        app.ports.storage.send(getStored());
+      };
+
+      setTimeout(window.onhashchange, 1);
     </script>
   </body>
 </html>
