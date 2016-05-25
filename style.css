@@ -1,7 +1,6 @@
 body {
-  padding: 50px;
   margin: 0;
-  margin: 0;
+  padding: 0;
   height: auto;
   display: block;
   position: absolute;
@@ -9,6 +8,8 @@ body {
   top: 0;
   left: 0;
   right: 0;
+  font-family: Verdana;
+  color: white;
 }
 body > div {
   display: flex;
@@ -16,17 +17,22 @@ body > div {
   justify-content: space-between;
   height: 100%;
 }
-.center-button {
+.button-container {
   display: block;
   background-color: #178CFF;
-  width: 100%;
-  padding-top: 3%;
-  padding-bottom: 3%;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   color: white;
   font-size: 20em;
   text-align: center;
   vertical-align: middle;
-  border-radius: 50%;
+  z-index: 1;
+}
+.button-span {
+  line-height: 80vh;
 }
 .navigation {
   display: none;
@@ -36,6 +42,12 @@ body > div {
   font-size: 2em;
   text-align: center;
   flex-wrap: wrap;
+  padding: 50px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
 }
 .stats-left {
   width: 50%;
@@ -47,14 +59,15 @@ body > div {
 }
 .btn {
   width:100%;
-  height: 50%;
+  height: 50vh;
   display: block;
-  padding-top: 10%;
-  padding-bottom: 10%;
   color: white;
   font-size: 10em;
   text-align: center;
   vertical-align: middle;
+  z-index: 5;
+  position: relative;
+  line-height: 50vh;
 }
 .btn-green {
   background-color: green;

@@ -10,8 +10,8 @@ import Actions exposing (..)
 content : Model -> Html Action
 content model =
   div []
-    [ a [ class "btn btn-green", onClick (updateAction True) ] [ text "Yes" ]
-    , a [ class "btn btn-red", onClick (updateAction False) ] [ text "No" ]
+    [ a [ class "btn btn-green", onClick (updateAction True) ] [ text "yes" ]
+    , a [ class "btn btn-red", onClick (updateAction False) ] [ text "no" ]
     ]
 
 updateAction : Bool -> Action
