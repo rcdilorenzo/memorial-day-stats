@@ -44,9 +44,12 @@ layout title model content =
 navigationView : String -> Html Action
 navigationView title =
   div [ class "navigation-container white" ]
-    [ div [ class "navigation-item navigation-icon" ]
+    [ div [ class "navigation-item navigation-home" ]
       [ a [ onClick RouteToHome ] [ i [ class "fa fa-home" ] [] ] ]
-    , h1 [ class "navigation-item navigation-title" ] [ text title ] ]
+    , h1 [ class "navigation-item navigation-title" ] [ text title ]
+    , div [ class "navigation-item navigation-settings" ]
+      [ a [ onClick RouteToHome ] [ i [ class "fa fa-cogs" ] [] ] ]
+    ]
 
 
 footerView : String -> String -> Html Action

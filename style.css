@@ -36,17 +36,24 @@ body > div > * {
   height: 10vh;
   color: black;
   display: flex;
+  justify-content: space-between;
 }
-.navigation-item {}
-.navigation-icon {
-  font-size: 35px;
-  padding: 10px 5px 10px 15px;
+.navigation-item {
+  font-size: 30px;
+  padding: 10px 15px 10px 15px;
   opacity: 0.5;
+  line-height: 1.5;
+}
+.navigation-home {
+  padding-right: 0px;
+}
+.navigation-settings {
+  padding-left: 0px;
 }
 .navigation-title {
-  font-size: 25px;
-  padding: 10px 15px 10px 5px;
-  line-height: 2;
+  font-size: 20px;
+  padding: 10px 5px 10px 5px;
+  line-height: 2.5;
   opacity: 0.5;
 }
 
