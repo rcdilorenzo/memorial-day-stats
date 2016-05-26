@@ -1,10 +1,11 @@
 module Model exposing (..)
 
 import Maybe exposing ( Maybe(..) )
+import Array exposing (fromList, length)
+import List
 
 type alias Model =
-  { count: Int
-  , route: String
+  { route: String
   , currentRow: Maybe Row
   , rows: List Row
   }
@@ -17,3 +18,15 @@ type alias Row =
 
 defaultRow : Row
 defaultRow = Row 0 "" False
+
+
+vehicleCount : Model -> Int
+vehicleCount model =
+  fromList model.rows
+    |> length
+
+
+peopleCount : Model -> Int
+peopleCount model =
+  List.map (\row -> row.passengers) model.rows
+    |> List.sum

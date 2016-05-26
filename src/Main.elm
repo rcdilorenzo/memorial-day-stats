@@ -3,6 +3,7 @@ port module Main exposing (..)
 import Html.App as Html
 import Json.Decode as Decode
 import Maybe exposing ( Maybe(..) )
+import Array
 
 import Model exposing (..)
 import Actions exposing (..)
@@ -20,7 +21,7 @@ main =
 
 init : (Model, Cmd msg)
 init =
-  ( Model 0 "" Nothing [], Cmd.none )
+  ( Model "" Nothing [], Cmd.none )
 
 
 -- UPDATE
@@ -36,10 +37,7 @@ update msg model =
       ( updated, Cmd.none )
 
     Increment ->
-      { model |
-        count = model.count + 1,
-        currentRow = (Just defaultRow)
-      }
+      {model | currentRow = (Just defaultRow)}
         |> changeRoute "#/have_attended"
         |> persist2
 
@@ -61,6 +59,15 @@ update msg model =
         update = \row -> {row | passengers = count}
       in
         updateRow model update
+          |> changeRoute "#/source"
+          |> persist2
+
+    UpdateRow (UpdateSource source) ->
+      let
+        update = \row -> {row | source = source}
+      in
+        updateRow model update
+          |> saveCurrentRow
           |> changeRoute ""
           |> persist2
 
@@ -76,6 +83,19 @@ updateRow model rowFunction =
         |> rowFunction
   in
      {model | currentRow = (Just row)}
+
+
+saveCurrentRow : Model -> Model
+saveCurrentRow model =
+  case model.currentRow of
+    Nothing ->
+      model
+
+    (Just row) ->
+      { model |
+        currentRow = Nothing,
+        rows = model.rows ++ [row]
+      }
 
 
 changeRoute : String -> Model -> (Model, Cmd Action)

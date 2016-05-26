@@ -10,6 +10,7 @@ import Actions exposing (..)
 import Views.Home as Home
 import Views.HaveAttended as HaveAttended
 import Views.PassengerCount as PassengerCount
+import Views.Source as Source
 
 
 render : Model -> Html Action
@@ -31,6 +32,9 @@ renderView model =
 
     "#/passenger_count" ->
       ( "How Many Passengers?", PassengerCount.content model )
+
+    "#/source" ->
+      ( "Source?", Source.content model )
 
     _ ->
       ( "Memorial Day", notFound )

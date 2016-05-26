@@ -13,7 +13,9 @@ content model =
     [ div []
       [ span [ class "btn-span add-btn-span" ] [ a [ class "add-btn blue", onClick Increment ] [ text "+" ] ]
       ]
-    , footerView (carsLabel model.count) "_ People"
+    , footerView
+      (toString (Model.vehicleCount model) ++ " Cars")
+      (toString (Model.peopleCount model) ++ " People")
     ]
 
 
