@@ -41,7 +41,6 @@ layout title model content =
   div []
     [ navigationView title
     , content
-    , footerView (carsLabel model.count) "_ People"
     ]
 
 
@@ -56,13 +55,6 @@ navigationView title =
     ]
 
 
-footerView : String -> String -> Html Action
-footerView left right =
-  footer [ class "stats-container" ]
-    [ div [ class "stats-item stats-cars" ] [ text left ]
-    , div [ class "stats-item stats-people" ] [ text right ]
-    ]
-
 notFound : Html Action
 notFound =
   div []
@@ -71,6 +63,3 @@ notFound =
     ]
 
 
-carsLabel : Int -> String
-carsLabel count =
-  (toString count) ++ " Cars"
