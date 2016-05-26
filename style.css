@@ -110,3 +110,16 @@ body > div > * {
 .stats-item {}
 .stats-cars {}
 .stats-people {}
+
+
+/*  GRID  */
+.btn-grid {
+  width: 100%;
+  height: 100%;
+  font-size: 22pt;
+}
+
+.btn-grid tr {
+  padding: 10px;
+  background-color: #E8BE68;
+}

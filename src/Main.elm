@@ -50,15 +50,32 @@ update msg model =
 
     UpdateRow (UpdateAttendedPreviously bool) ->
       let
-          row = (Maybe.withDefault defaultRow model.currentRow)
-          updatedRow = {row | attendedPreviously = bool}
+        update = \row -> {row | attendedPreviously = bool}
       in
-         {model | currentRow = (Just updatedRow)}
-           |> changeRoute ""
-           |> persist2
+        updateRow model update
+          |> changeRoute "#/passenger_count"
+          |> persist2
+
+    UpdateRow (UpdatePassengers count) ->
+      let
+        update = \row -> {row | passengers = count}
+      in
+        updateRow model update
+          |> changeRoute ""
+          |> persist2
+
 
     UpdateRow _ ->
       ( model, Cmd.none )
+
+
+updateRow : Model -> (Row -> Row) -> Model
+updateRow model rowFunction =
+  let
+      row = (Maybe.withDefault defaultRow model.currentRow)
+        |> rowFunction
+  in
+     {model | currentRow = (Just row)}
 
 
 changeRoute : String -> Model -> (Model, Cmd Action)
