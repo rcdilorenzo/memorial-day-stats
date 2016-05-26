@@ -9,24 +9,18 @@ import Actions exposing (..)
 
 content : Model -> Html Action
 content model =
-  div [ class "btn-container" ]
-    [ sourceButton "Unknown"
-    , sourceButton "Banners"
-    , sourceButton "Flyers"
-    , sourceButton "Website"
-    , sourceButton "Social Media"
-    , sourceButton "Word of Mouth"
-    , sourceButton "Backlink"
+  div [ class "btn-container source-btn-container" ]
+    [ div [ class "btn-grid source-btn-grid" ]
+      [ source "Unknown", source "Banners", source "Flyers", source "Website", source "Social Media", source "Word of Mouth", source "Backlink" ]
     ]
 
 
-sourceButton : String -> Html Action
-sourceButton source =
-  span [ class "btn-span btn-fixed" ]
+source : String -> Html Action
+source source =
+  div [ class "btn-grid-item source-btn-grid-item red" ]
     [ a [ onClick (updateAction source) ] [ text source ] ]
 
 
 updateAction : String -> Action
 updateAction source =
   UpdateRow (UpdateSource source)
-

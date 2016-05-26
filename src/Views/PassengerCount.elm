@@ -9,18 +9,14 @@ import Actions exposing (..)
 
 content : Model -> Html Action
 content model =
-  div [ class "btn-container" ]
-    [ table [ class "btn-grid" ]
-      [ tbody []
-        [ tr [] [ cell 1, cell 2, cell 3 ]
-        , tr [] [ cell 4, cell 5, cell 6 ]
-        , tr [] [ cell 7, cell 8, cell 9 ]
-        ]
+  div [ class "btn-container passenger-btn-container" ]
+    [ div [ class "btn-grid passenger-btn-grid" ]
+        [ number 1, number 2, number 3, number 4, number 5, number 6, number 7 , number 8, number 9 ]
       ]
-    ]
 
 
-cell : Int -> Html Action
-cell int =
-  td [ onClick (UpdateRow (UpdatePassengers int)) ]
+number : Int -> Html Action
+number int =
+  div [ class "btn-grid-item passenger-btn-grid-item yellow"
+  , onClick (UpdateRow (UpdatePassengers int)) ]
     [ text (toString int) ]

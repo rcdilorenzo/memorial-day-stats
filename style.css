@@ -23,6 +23,7 @@
 body {
   font-family: Verdana;
   color: #F6F6F6;
+  background-color: #F6F6F6;
 }
 body > div > * {
   position: absolute;
@@ -68,6 +69,8 @@ body > div > * {
 .attended-btn-container {
   display: flex;
 }
+.passenger-btn-container {}
+.source-btn-container {}
 .btn-span {
   line-height: 80vh;
 }
@@ -89,12 +92,36 @@ body > div > * {
   position: absolute;
   left: 0;
   right: 0;
+  border: 1px solid #F6F6F6;
 }
 .attended-btn-yes {
   top: 0;
 }
 .attended-btn-no {
   bottom: 0;
+}
+
+/*  GRID  */
+
+.btn-grid {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.passenger-btn-grid {}
+.passenger-btn-grid {}
+.passenger-btn-grid-item {
+  width: 33.33333%;
+  font-size: 6em;
+  padding-top: 30px;
+  border: 1px solid #F6F6F6;
+}
+.source-btn-grid-item {
+  width: 100%;
+  font-size: 2.5em;
+  padding-top: 10px;
+  border: 1px solid #F6F6F6;
 }
 
 /*  STATISTICS  */
@@ -113,16 +140,3 @@ body > div > * {
 .stats-item {}
 .stats-cars {}
 .stats-people {}
-
-
-/*  GRID  */
-.btn-grid {
-  width: 100%;
-  height: 100%;
-  font-size: 26pt;
-}
-
-.btn-grid tr {
-  padding: 10px;
-  background-color: #E8BE68;
-}
