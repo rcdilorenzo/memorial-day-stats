@@ -5,6 +5,8 @@ import Array exposing (fromList, length)
 import List exposing (unzip, map, filterMap, sum)
 import Dict
 import Time exposing (Time)
+import Date
+import Date.Format
 import String exposing (join)
 import Dict.Extra exposing (groupBy)
 
@@ -50,6 +52,24 @@ sourceData model =
      (labels, values)
 
 
+attendanceData : Model -> (List String, List Float)
+attendanceData model =
+  let
+      hourOfRow = \row -> Time.inHours row.timestamp |> floor |> toFloat
+      hoursToDescription = \hours -> (Time.hour * hours)
+        |> Date.fromTime
+        |> Date.Format.format "%I %p"
+
+      (hours, listOfRows) = groupBy hourOfRow model.rows
+        |> Dict.toList
+        |> unzip
+
+      values = map (\row -> List.length row |> toFloat) listOfRows
+      labels = map hoursToDescription hours
+  in
+     (labels, values)
+
+
 attendedPreviouslyCount : Model -> (Int, Int)
 attendedPreviouslyCount model =
   let
@@ -79,7 +99,7 @@ attendedPreviouslyStatistic model =
 toCSV : Model -> String
 toCSV model =
   let
-      headers = "Passengers,Attended Previously,Source"
+      headers = "Passengers,Attended Previously,Source,Timestamp"
   in
      headers :: (map rowToCSV model.rows)
       |> join "%0D%0A"
@@ -88,9 +108,13 @@ toCSV model =
 rowToCSV : Row -> String
 rowToCSV row =
   let
+      timestamp = row.timestamp
+        |> Date.fromTime
+        |> Date.Format.format "%m/%d/%Y %I:%M:%S %p"
       attrs =
         [ (toString row.passengers)
         , (if row.attendedPreviously then "Yes" else "No")
-        , row.source ]
+        , row.source
+        , timestamp ]
   in
      join "," attrs
