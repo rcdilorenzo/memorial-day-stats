@@ -4,12 +4,14 @@ import Maybe exposing ( Maybe(..) )
 import Array exposing (fromList, length)
 import List exposing (unzip, map, filterMap, sum)
 import Dict
+import Time exposing (Time)
 import String exposing (join)
 import Dict.Extra exposing (groupBy)
 
 type alias Model =
   { route: String
   , currentRow: Maybe Row
+  , toSave: List Row
   , rows: List Row
   }
 
@@ -17,10 +19,11 @@ type alias Row =
   { passengers: Int
   , source: String
   , attendedPreviously: Bool
+  , timestamp : Time
   }
 
 defaultRow : Row
-defaultRow = Row 0 "" False
+defaultRow = Row 0 "" False 0
 
 
 vehicleCount : Model -> Int

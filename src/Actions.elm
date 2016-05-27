@@ -1,6 +1,9 @@
 module Actions exposing (..)
 
+import Time exposing (Time)
+
 import Model exposing (Model)
+
 
 type Action
   = Increment
@@ -8,6 +11,8 @@ type Action
   | RouteToStats
   | RouteToSettings
   | ResetData
+  | Identity
+  | TimeFetched Time
   | UpdateRow RowAction
   | ShowConfirm String
   | Confirmed Bool

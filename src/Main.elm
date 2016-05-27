@@ -4,6 +4,8 @@ import Html.App as Html
 import Json.Decode as Decode
 import Maybe exposing ( Maybe(..) )
 import Array
+import Time exposing (..)
+import Task exposing (Task)
 
 import Model exposing (..)
 import Actions exposing (..)
@@ -21,7 +23,7 @@ main =
 
 init : (Model, Cmd msg)
 init =
-  ( Model "" Nothing [], Cmd.none )
+  ( Model "" Nothing [] [], Cmd.none )
 
 
 -- UPDATE
@@ -78,9 +80,9 @@ update msg model =
         update = \row -> {row | source = source}
       in
         updateRow model update
-          |> saveCurrentRow
+          |> addCurrentToSaveList
           |> changeRoute ""
-          |> persist2
+          |> persist2WithCmd fetchTime
 
     ShowConfirm message ->
       ( model, confirm message )
@@ -91,8 +93,22 @@ update msg model =
       else
         ( model, Cmd.none )
 
+    TimeFetched time ->
+      let
+        update = \row -> {row | timestamp = time}
+        updatedRows = List.map update model.toSave
+        updatedModel = { model |
+          toSave = [],
+          rows = model.rows ++ updatedRows
+        }
+      in
+        persist2 ( updatedModel, Cmd.none )
+
     ResetData ->
       init |> persist2
+
+    Identity ->
+      ( model, Cmd.none )
 
     UpdateRow _ ->
       ( model, Cmd.none )
@@ -115,6 +131,23 @@ updateRow model rowFunction =
      {model | currentRow = (Just row)}
 
 
+addCurrentToSaveList : Model -> Model
+addCurrentToSaveList model =
+  case model.currentRow of
+    Nothing ->
+      model
+
+    (Just row) ->
+      { model |
+        currentRow = Nothing,
+        toSave = model.toSave ++ [row]
+      }
+
+
+fetchTime = Task.perform
+  (\_ -> Identity) TimeFetched Time.now
+
+
 saveCurrentRow : Model -> Model
 saveCurrentRow model =
   case model.currentRow of
@@ -131,6 +164,11 @@ saveCurrentRow model =
 changeRoute : String -> Model -> (Model, Cmd Action)
 changeRoute newRoute model =
   ( {model | route = newRoute}, location newRoute )
+
+
+persist2WithCmd : Cmd Action -> (Model, Cmd Action) -> (Model, Cmd Action)
+persist2WithCmd task (model, cmd) =
+  persist2 ( model, Cmd.batch [ task, cmd ] )
 
 
 persist2 : (Model, Cmd Action) -> (Model, Cmd Action)
