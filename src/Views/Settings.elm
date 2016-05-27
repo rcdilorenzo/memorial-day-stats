@@ -9,10 +9,10 @@ import Actions exposing (..)
 
 content : Model -> Html Action
 content model =
-  div [ class "btn-container source-btn-container" ]
-    [ div [ class "btn-grid source-btn-grid" ]
-      [ a [ class "btn-span", style [("color", "black")], onClick RouteToStats ] [ text "Stats" ]
-      , a [ class "btn-span", style [("color", "black")], onClick ResetData ] [ text "Reset All Data?" ]
+  div [ class "btn-container settings-btn-container" ]
+    [ span [ class "btn-span settings-btn-span" ]
+      [ a [ class "settings-btn settings-btn-stats yellow", onClick RouteToStats ] [ text "stats" ] ]
+    , span [ class "btn-span settings-btn-span" ]
+      [ a [ class "settings-btn settings-btn-reset red", onClick ResetData ] [ text "reset all data?" ]
       ]
     ]
-
