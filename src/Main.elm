@@ -46,6 +46,16 @@ update msg model =
         |> changeRoute ""
         |> persist2
 
+    RouteToSettings ->
+      model
+        |> changeRoute "#/settings"
+        |> persist2
+
+    RouteToStats ->
+      model
+        |> changeRoute "#/stats"
+        |> persist2
+
     UpdateRow (UpdateAttendedPreviously bool) ->
       let
         update = \row -> {row | attendedPreviously = bool}
@@ -71,6 +81,8 @@ update msg model =
           |> changeRoute ""
           |> persist2
 
+    ResetData ->
+      init |> persist2
 
     UpdateRow _ ->
       ( model, Cmd.none )

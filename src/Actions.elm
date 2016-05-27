@@ -5,6 +5,9 @@ import Model exposing (Model)
 type Action
   = Increment
   | RouteToHome
+  | RouteToStats
+  | RouteToSettings
+  | ResetData
   | UpdateRow RowAction
   | Load Model
 

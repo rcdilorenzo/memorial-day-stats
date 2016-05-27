@@ -11,7 +11,14 @@ content : Model -> Html Action
 content model =
   div [ class "btn-container source-btn-container" ]
     [ div [ class "btn-grid source-btn-grid" ]
-      [ source "Unknown", source "Banners", source "Flyers", source "Website", source "Social Media", source "Word of Mouth", source "Backlink" ]
+      [ source "Unknown"
+      , source "Banners"
+      , source "Flyers"
+      , source "Website"
+      , source "Social Media"
+      , source "Word of Mouth"
+      , source "Backlink"
+      ]
     ]
 
 

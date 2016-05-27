@@ -11,6 +11,8 @@ import Views.Home as Home
 import Views.HaveAttended as HaveAttended
 import Views.PassengerCount as PassengerCount
 import Views.Source as Source
+import Views.Stats as Stats
+import Views.Settings as Settings
 
 
 render : Model -> Html Action
@@ -36,6 +38,12 @@ renderView model =
     "#/source" ->
       ( "Source?", Source.content model )
 
+    "#/stats" ->
+      ( "Stats", Stats.content model )
+
+    "#/settings" ->
+      ( "Settings", Settings.content model )
+
     _ ->
       ( "Memorial Day", notFound )
 
@@ -55,7 +63,7 @@ navigationView title =
       [ a [ onClick RouteToHome ] [ i [ class "fa fa-home" ] [] ] ]
     , h1 [ class "navigation-item navigation-title" ] [ text title ]
     , div [ class "navigation-item navigation-settings" ]
-      [ a [ onClick RouteToHome ] [ i [ class "fa fa-cogs" ] [] ] ]
+      [ a [ onClick RouteToSettings ] [ i [ class "fa fa-cogs" ] [] ] ]
     ]
 
 
