@@ -15,9 +15,9 @@ content model =
   in
     div [ class "btn-container settings-btn-container" ]
       [ span [ class "btn-span settings-btn-span" ]
-        [ a [ class "settings-btn settings-btn-stats yellow", onClick RouteToStats ] [ text "stats" ] ]
+        [ a [ class "settings-btn settings-btn-stats green", onClick RouteToStats ] [ text "stats" ] ]
       , span [ class "btn-span settings-btn-span" ]
         [ a [ class "settings-btn settings-btn-export yellow", href export ] [ text "export" ] ]
       , span [ class "btn-span settings-btn-span" ]
-        [ a [ class "settings-btn settings-btn-reset red", onClick confirmAction ] [ text "reset all data?" ] ]
+        [ a [ class "settings-btn settings-btn-reset red", onClick confirmAction ] [ text "reset?" ] ]
       ]

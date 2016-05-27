@@ -30,6 +30,11 @@ body > div > * {
   left: 0;
   right: 0;
 }
+.btn-container a {
+  color: #F6F6F6;
+  text-decoration: none;
+  cursor: default;
+}
 
 /*  NAVIGATION  */
 
@@ -101,7 +106,7 @@ body > div > * {
   bottom: 0;
 }
 .settings-btn {
-  height: 45vh;
+  height: 30vh;
   font-size: 5em;
   z-index: 3;
   line-height: 40vh;
@@ -111,8 +116,12 @@ body > div > * {
   border: 1px solid #F6F6F6;
 }
 .settings-btn-stats {
-  line-height: 40vh;
+  line-height: 30vh;
   top: 0;
+}
+.settings-btn-export {
+  line-height: 30vh;
+  top: 30vh;
 }
 .settings-btn-reset {
   padding-top: 7.5vh;
