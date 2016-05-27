@@ -9,10 +9,13 @@ import Actions exposing (..)
 
 content : Model -> Html Action
 content model =
-  div [ class "btn-container settings-btn-container" ]
-    [ span [ class "btn-span settings-btn-span" ]
-      [ a [ class "settings-btn settings-btn-stats yellow", onClick RouteToStats ] [ text "stats" ] ]
-    , span [ class "btn-span settings-btn-span" ]
-      [ a [ class "settings-btn settings-btn-reset red", onClick ResetData ] [ text "reset all data?" ]
+  let
+      confirmAction = (ShowConfirm "Are you sure you want to reset ALL of the data?")
+  in
+    div [ class "btn-container settings-btn-container" ]
+      [ span [ class "btn-span settings-btn-span" ]
+        [ a [ class "settings-btn settings-btn-stats yellow", onClick RouteToStats ] [ text "stats" ] ]
+      , span [ class "btn-span settings-btn-span" ]
+        [ a [ class "settings-btn settings-btn-reset red", onClick confirmAction ] [ text "reset all data?" ]
+        ]
       ]
-    ]

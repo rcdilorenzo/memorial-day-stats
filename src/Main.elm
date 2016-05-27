@@ -28,6 +28,7 @@ init =
 
 port save : Model -> Cmd msg
 port location : String -> Cmd msg
+port confirm : String -> Cmd msg
 
 
 update : Action -> Model -> (Model, Cmd Action)
@@ -81,11 +82,28 @@ update msg model =
           |> changeRoute ""
           |> persist2
 
+    ShowConfirm message ->
+      ( model, confirm message )
+
+    Confirmed confirmed ->
+      if model.route == "#/settings" then
+         handleConfirmResetData model confirmed
+      else
+        ( model, Cmd.none )
+
     ResetData ->
       init |> persist2
 
     UpdateRow _ ->
       ( model, Cmd.none )
+
+
+handleConfirmResetData : Model -> Bool -> (Model, Cmd Action)
+handleConfirmResetData model confirmed =
+  if confirmed then
+      init |> persist2
+  else
+    model |> changeRoute "" |> persist2
 
 
 updateRow : Model -> (Row -> Row) -> Model
@@ -129,9 +147,13 @@ persist model =
 
 
 port storage : (Model -> msg) -> Sub msg
+port confirmed : (Bool -> msg) -> Sub msg
 
 
 subscriptions : Model -> Sub Action
 subscriptions model =
-  storage Load
+  Sub.batch
+    [ storage Load
+    , confirmed Confirmed
+    ]
 

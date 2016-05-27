@@ -9,6 +9,8 @@ type Action
   | RouteToSettings
   | ResetData
   | UpdateRow RowAction
+  | ShowConfirm String
+  | Confirmed Bool
   | Load Model
 
 type RowAction
