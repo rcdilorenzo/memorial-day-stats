@@ -4,6 +4,7 @@ import Maybe exposing ( Maybe(..) )
 import Array exposing (fromList, length)
 import List exposing (unzip, map, filterMap, sum)
 import Dict
+import String exposing (join)
 import Dict.Extra exposing (groupBy)
 
 type alias Model =
@@ -70,3 +71,23 @@ attendedPreviouslyStatistic model =
       percentage = (toFloat attendedPreviously * 100) / (toFloat totalRows) |> round
   in
      (toString percentage) ++ "% (" ++ (toString attendedPreviously) ++ " people)"
+
+
+toCSV : Model -> String
+toCSV model =
+  let
+      headers = "Passengers,Attended Previously,Source"
+  in
+     headers :: (map rowToCSV model.rows)
+      |> join "%0D%0A"
+
+
+rowToCSV : Row -> String
+rowToCSV row =
+  let
+      attrs =
+        [ (toString row.passengers)
+        , (if row.attendedPreviously then "Yes" else "No")
+        , row.source ]
+  in
+     join "," attrs
