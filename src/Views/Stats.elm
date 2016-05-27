@@ -15,7 +15,8 @@ content model =
       (labels, values) = sourceData model
   in
     div [ class "btn-container source-btn-container" ]
-      [ div [ class "btn-grid source-btn-grid" ]
+      [ b [ style [("color", "black")] ] [ text ("Previously Attended: " ++ (attendedPreviouslyStatistic model)) ]
+      , div [ class "btn-grid source-btn-grid" ]
         [ pie values labels
             |> Chart.title "Sources"
             |> updateStyles "legend" [("color", "black")]
