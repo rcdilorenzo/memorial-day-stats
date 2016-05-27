@@ -4,13 +4,21 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 
+import Chart exposing (..)
+
 import Model exposing (..)
 import Actions exposing (..)
 
 content : Model -> Html Action
 content model =
-  div [ class "btn-container source-btn-container" ]
-    [ div [ class "btn-grid source-btn-grid" ]
-      [ text "Blah"
+  let
+      (labels, values) = sourceData model
+  in
+    div [ class "btn-container source-btn-container" ]
+      [ div [ class "btn-grid source-btn-grid" ]
+        [ pie values labels
+            |> Chart.title "Sources"
+            |> updateStyles "legend" [("color", "black")]
+            |> toHtml
+        ]
       ]
-    ]

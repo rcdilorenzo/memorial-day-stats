@@ -2,7 +2,9 @@ module Model exposing (..)
 
 import Maybe exposing ( Maybe(..) )
 import Array exposing (fromList, length)
-import List
+import List exposing (unzip, map)
+import Dict
+import Dict.Extra exposing (groupBy)
 
 type alias Model =
   { route: String
@@ -30,3 +32,15 @@ peopleCount : Model -> Int
 peopleCount model =
   List.map (\row -> row.passengers) model.rows
     |> List.sum
+
+
+sourceData : Model -> (List String, List Float)
+sourceData model =
+  let
+      (labels, listOfRows) = groupBy .source model.rows
+        |> Dict.toList
+        |> unzip
+
+      values = map (\row -> List.length row |> toFloat) listOfRows
+  in
+     (labels, values)
