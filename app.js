@@ -12260,7 +12260,7 @@ var _user$project$Views_Source$source = function (source) {
 		_elm_lang$html$Html$div,
 		_elm_lang$core$Native_List.fromArray(
 			[
-				_elm_lang$html$Html_Attributes$class('btn-grid-item source-btn-grid-item red')
+				_elm_lang$html$Html_Attributes$class('btn-grid-item source-btn-grid-item purple')
 			]),
 		_elm_lang$core$Native_List.fromArray(
 			[
@@ -12316,98 +12316,167 @@ var _user$project$Views_Stats$content = function (model) {
 		_elm_lang$html$Html$div,
 		_elm_lang$core$Native_List.fromArray(
 			[
-				_elm_lang$html$Html_Attributes$class('btn-container source-btn-container')
+				_elm_lang$html$Html_Attributes$class('stats-full-container')
 			]),
 		_elm_lang$core$Native_List.fromArray(
 			[
 				A2(
-				_elm_lang$html$Html$b,
+				_elm_lang$html$Html$div,
 				_elm_lang$core$Native_List.fromArray(
 					[
-						_elm_lang$html$Html_Attributes$style(
-						_elm_lang$core$Native_List.fromArray(
-							[
-								{ctor: '_Tuple2', _0: 'color', _1: 'black'}
-							]))
+						_elm_lang$html$Html_Attributes$class('stats-container ')
 					]),
 				_elm_lang$core$Native_List.fromArray(
 					[
-						_elm_lang$html$Html$text(
 						A2(
-							_elm_lang$core$Basics_ops['++'],
-							'Previously Attended: ',
-							_user$project$Model$attendedPreviouslyStatistic(model)))
-					])),
-				A2(
-				_elm_lang$html$Html$b,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html_Attributes$style(
+						_elm_lang$html$Html$div,
 						_elm_lang$core$Native_List.fromArray(
 							[
-								{ctor: '_Tuple2', _0: 'color', _1: 'black'}
-							]))
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html$text(
-						A2(
-							_elm_lang$core$Basics_ops['++'],
-							_elm_lang$core$Basics$toString(
-								_user$project$Model$vehicleCount(model)),
-							' Cars'))
-					])),
-				A2(
-				_elm_lang$html$Html$b,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html_Attributes$style(
+								_elm_lang$html$Html_Attributes$class('stats-item stats-attended')
+							]),
 						_elm_lang$core$Native_List.fromArray(
 							[
-								{ctor: '_Tuple2', _0: 'color', _1: 'black'}
-							]))
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html$text(
+								_elm_lang$html$Html$text(
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									_user$project$Model$attendedPreviouslyStatistic(model),
+									' Previously Attended'))
+							])),
 						A2(
-							_elm_lang$core$Basics_ops['++'],
-							_elm_lang$core$Basics$toString(
-								_user$project$Model$peopleCount(model)),
-							' People'))
+						_elm_lang$html$Html$div,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html_Attributes$class('stats-item stats-cars')
+							]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text(
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									_elm_lang$core$Basics$toString(
+										_user$project$Model$vehicleCount(model)),
+									' Cars'))
+							])),
+						A2(
+						_elm_lang$html$Html$div,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html_Attributes$class('stats-item stats-people')
+							]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text(
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									_elm_lang$core$Basics$toString(
+										_user$project$Model$peopleCount(model)),
+									' People'))
+							]))
 					])),
 				A2(
 				_elm_lang$html$Html$div,
 				_elm_lang$core$Native_List.fromArray(
 					[
-						_elm_lang$html$Html_Attributes$class('btn-grid source-btn-grid')
+						_elm_lang$html$Html_Attributes$class('stats-item stats-source')
 					]),
 				_elm_lang$core$Native_List.fromArray(
 					[
 						_simonh1000$elm_charts$Chart$toHtml(
-						A3(
-							_simonh1000$elm_charts$Chart$updateStyles,
-							'legend',
-							_elm_lang$core$Native_List.fromArray(
-								[
-									{ctor: '_Tuple2', _0: 'color', _1: 'black'}
-								]),
-							A2(
-								_simonh1000$elm_charts$Chart$title,
-								'Sources',
-								A2(_simonh1000$elm_charts$Chart$pie, values, labels)))),
+						_simonh1000$elm_charts$Chart$addValueToLabel(
+							A3(
+								_simonh1000$elm_charts$Chart$updateStyles,
+								'legend',
+								_elm_lang$core$Native_List.fromArray(
+									[
+										{ctor: '_Tuple2', _0: 'width', _1: '50%'},
+										{ctor: '_Tuple2', _0: 'height', _1: 'auto'},
+										{ctor: '_Tuple2', _0: 'flex-basis', _1: 'auto'}
+									]),
+								A3(
+									_simonh1000$elm_charts$Chart$updateStyles,
+									'chart',
+									_elm_lang$core$Native_List.fromArray(
+										[
+											{ctor: '_Tuple2', _0: 'background', _1: '#3498db'},
+											{ctor: '_Tuple2', _0: 'width', _1: '50%'},
+											{ctor: '_Tuple2', _0: 'height', _1: 'auto'}
+										]),
+									A3(
+										_simonh1000$elm_charts$Chart$updateStyles,
+										'chart-container',
+										_elm_lang$core$Native_List.fromArray(
+											[
+												{ctor: '_Tuple2', _0: 'display', _1: 'block'},
+												{ctor: '_Tuple2', _0: 'background-color', _1: 'transparent'},
+												{ctor: '_Tuple2', _0: 'padding', _1: '0'},
+												{ctor: '_Tuple2', _0: 'display', _1: 'flex'}
+											]),
+										A3(
+											_simonh1000$elm_charts$Chart$updateStyles,
+											'container',
+											_elm_lang$core$Native_List.fromArray(
+												[
+													{ctor: '_Tuple2', _0: 'background-color', _1: 'transparent'},
+													{ctor: '_Tuple2', _0: 'padding', _1: '0'},
+													{ctor: '_Tuple2', _0: 'display', _1: 'block'},
+													{ctor: '_Tuple2', _0: 'flex-direction', _1: 'inherit'}
+												]),
+											A2(
+												_simonh1000$elm_charts$Chart$colors,
+												_elm_lang$core$Native_List.fromArray(
+													['#3498db', '#2ecc71', '#e74c3c', '#f1c40f', '#9b59b6', '#e67e22', '#95a5a6']),
+												A2(
+													_simonh1000$elm_charts$Chart$title,
+													'Sources',
+													A2(_simonh1000$elm_charts$Chart$pie, values, labels)))))))))
+					])),
+				A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$class('stats-item stats-time')
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[
 						_simonh1000$elm_charts$Chart$toHtml(
-						A3(
-							_simonh1000$elm_charts$Chart$updateStyles,
-							'legend',
-							_elm_lang$core$Native_List.fromArray(
-								[
-									{ctor: '_Tuple2', _0: 'color', _1: 'black'}
-								]),
-							A2(
-								_simonh1000$elm_charts$Chart$title,
-								'Attendance',
-								A2(_simonh1000$elm_charts$Chart$vBar, attendanceValues, attendanceLabels))))
+						_simonh1000$elm_charts$Chart$addValueToLabel(
+							A3(
+								_simonh1000$elm_charts$Chart$updateStyles,
+								'legend',
+								_elm_lang$core$Native_List.fromArray(
+									[
+										{ctor: '_Tuple2', _0: 'justify-content', _1: 'center'}
+									]),
+								A3(
+									_simonh1000$elm_charts$Chart$updateStyles,
+									'chart-elements',
+									_elm_lang$core$Native_List.fromArray(
+										[
+											{ctor: '_Tuple2', _0: 'background-color', _1: '#95a5a6'}
+										]),
+									A3(
+										_simonh1000$elm_charts$Chart$updateStyles,
+										'chart-container',
+										_elm_lang$core$Native_List.fromArray(
+											[
+												{ctor: '_Tuple2', _0: 'display', _1: 'block'},
+												{ctor: '_Tuple2', _0: 'background-color', _1: 'transparent'},
+												{ctor: '_Tuple2', _0: 'padding', _1: '0'}
+											]),
+										A3(
+											_simonh1000$elm_charts$Chart$updateStyles,
+											'container',
+											_elm_lang$core$Native_List.fromArray(
+												[
+													{ctor: '_Tuple2', _0: 'background-color', _1: 'transparent'},
+													{ctor: '_Tuple2', _0: 'padding', _1: '0'},
+													{ctor: '_Tuple2', _0: 'display', _1: 'block'},
+													{ctor: '_Tuple2', _0: 'flex-direction', _1: 'inherit'}
+												]),
+											A2(
+												_simonh1000$elm_charts$Chart$title,
+												'Attendance',
+												A2(_simonh1000$elm_charts$Chart$vBar, attendanceValues, attendanceLabels))))))))
 					]))
 			]));
 };
@@ -12438,7 +12507,7 @@ var _user$project$Views_Settings$content = function (model) {
 						_elm_lang$html$Html$a,
 						_elm_lang$core$Native_List.fromArray(
 							[
-								_elm_lang$html$Html_Attributes$class('settings-btn settings-btn-stats green'),
+								_elm_lang$html$Html_Attributes$class('settings-btn settings-btn-stats orange'),
 								_elm_lang$html$Html_Events$onClick(_user$project$Actions$RouteToStats)
 							]),
 						_elm_lang$core$Native_List.fromArray(
@@ -12458,7 +12527,7 @@ var _user$project$Views_Settings$content = function (model) {
 						_elm_lang$html$Html$a,
 						_elm_lang$core$Native_List.fromArray(
 							[
-								_elm_lang$html$Html_Attributes$class('settings-btn settings-btn-export yellow'),
+								_elm_lang$html$Html_Attributes$class('settings-btn settings-btn-export grey'),
 								_elm_lang$html$Html_Attributes$href($export)
 							]),
 						_elm_lang$core$Native_List.fromArray(
