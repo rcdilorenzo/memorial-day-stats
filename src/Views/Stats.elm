@@ -15,18 +15,62 @@ content model =
       (labels, values) = sourceData model
       (attendanceLabels, attendanceValues) = attendanceData model
   in
-    div [ class "btn-container source-btn-container" ]
-      [ b [ style [("color", "black")] ] [ text ("Previously Attended: " ++ (attendedPreviouslyStatistic model)) ]
-      , b [ style [("color", "black")] ] [ text (toString (Model.vehicleCount model) ++ " Cars") ]
-      , b [ style [("color", "black")] ] [ text (toString (Model.peopleCount model) ++ " People") ]
-      , div [ class "btn-grid source-btn-grid" ]
+    div [ class "stats-full-container" ]
+      [ div [ class "stats-container " ] [
+        div [ class "stats-item stats-attended" ] [ text ((attendedPreviouslyStatistic model) ++ " Previously Attended") ]
+        , div [ class "stats-item stats-cars" ] [ text (toString (Model.vehicleCount model) ++ " Cars") ]
+        , div [ class "stats-item stats-people" ] [ text (toString (Model.peopleCount model) ++ " People") ]
+      ]
+      , div [ class "stats-item stats-source" ]
         [ pie values labels
-            |> Chart.title "Sources"
-            |> updateStyles "legend" [("color", "black")]
-            |> toHtml
-        , vBar attendanceValues attendanceLabels
-            |> Chart.title "Attendance"
-            |> updateStyles "legend" [("color", "black")]
-            |> toHtml
+          |> Chart.title "Sources"
+          |> colors [ "#3498db", "#2ecc71", "#e74c3c", "#f1c40f", "#9b59b6", "#e67e22", "#95a5a6" ]
+          |> updateStyles "container"
+            [ ( "background-color", "transparent" )
+            , ( "padding", "0" )
+            , ( "display", "block" )
+            , ( "flex-direction", "inherit" )
+            ]
+          |> updateStyles "chart-container"
+            [ ( "display", "block" )
+            , ( "background-color", "transparent" )
+            , ( "padding", "0" )
+            , ( "display", "flex" )
+            ]
+          |> updateStyles "chart"
+            [ ( "background", "#3498db" )
+            , ( "width", "50%" )
+            , ( "height", "auto" )
+            ]
+          |> updateStyles "legend"
+            [ ( "width", "50%" )
+            , ( "height", "auto" )
+            , ( "flex-basis", "auto" )
+            ]
+          |> addValueToLabel
+          |> toHtml
+        ]
+      , div [ class "stats-item stats-time" ]
+        [ vBar attendanceValues attendanceLabels
+          |> Chart.title "Attendance"
+          |> updateStyles "container"
+            [ ( "background-color", "transparent" )
+            , ( "padding", "0" )
+            , ( "display", "block" )
+            , ( "flex-direction", "inherit" )
+            ]
+          |> updateStyles "chart-container"
+            [ ( "display", "block" )
+            , ( "background-color", "transparent" )
+            , ( "padding", "0" )
+            ]
+          |> updateStyles "chart-elements"
+            [ ( "background-color", "#95a5a6" )
+            ]
+          |> updateStyles "legend"
+            [ ( "justify-content", "center" )
+            ]
+          |> addValueToLabel
+          |> toHtml
         ]
       ]

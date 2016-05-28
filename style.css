@@ -5,25 +5,37 @@
   margin: 0;
   padding: 0;
 }
+.blue {
+  background-color: #3498db;
+}
 .green {
-  background-color: #468966;
+  background-color: #2ecc71;
 }
 .red {
-  background-color: #B64926;
-}
-.blue {
-  background-color: #178CFF;
+  background-color: #e74c3c;
 }
 .yellow {
-  background-color: #FFB03B;
+  background-color: #f1c40f;
+}
+.purple {
+  background-color: #9b59b6;
+}
+.orange {
+  background-color: #e67e22;
 }
 .white {
-  background-color: #F6F6F6;
+  background-color: #ecf0f1;
+}
+.grey {
+  background-color: #95a5a6;
+}
+.black {
+  background-color: #34495e;
 }
 body {
   font-family: Verdana;
-  color: #F6F6F6;
-  background-color: #F6F6F6;
+  color: #ecf0f1;
+  background-color: #ecf0f1;
 }
 body > div > * {
   position: absolute;
@@ -31,7 +43,7 @@ body > div > * {
   right: 0;
 }
 .btn-container a {
-  color: #F6F6F6;
+  color: #ecf0f1;
   text-decoration: none;
   cursor: default;
 }
@@ -40,14 +52,13 @@ body > div > * {
 
 .navigation-container {
   height: 10vh;
-  color: black;
+  color: #34495e;
   display: flex;
   justify-content: space-between;
 }
 .navigation-item {
   font-size: 30px;
   padding: 10px 15px 10px 15px;
-  opacity: 0.5;
   line-height: 1.5;
 }
 .navigation-home {
@@ -60,7 +71,6 @@ body > div > * {
   font-size: 20px;
   padding: 10px 5px 10px 5px;
   line-height: 2.5;
-  opacity: 0.5;
 }
 
 /*  BUTTONS  */
@@ -97,7 +107,7 @@ body > div > * {
   position: absolute;
   left: 0;
   right: 0;
-  border: 1px solid #F6F6F6;
+  border: 1px solid #ecf0f1;
 }
 .attended-btn-yes {
   top: 0;
@@ -113,7 +123,7 @@ body > div > * {
   position: absolute;
   left: 0;
   right: 0;
-  border: 1px solid #F6F6F6;
+  border: 1px solid #ecf0f1;
 }
 .settings-btn-stats {
   line-height: 30vh;
@@ -142,22 +152,28 @@ body > div > * {
 .passenger-btn-grid-item {
   width: 33.33333%;
   font-size: 6em;
-  padding-top: 30px;
-  border: 1px solid #F6F6F6;
+  line-height: 30vh;
+  border: 1px solid #ecf0f1;
 }
 .source-btn-grid-item {
   width: 100%;
   font-size: 2.5em;
-  padding-top: 10px;
-  border: 1px solid #F6F6F6;
+  line-height: 12vh;
+  border: 1px solid #ecf0f1;
 }
 
 /*  STATISTICS  */
 
+h3 {
+  font-size: 2em;
+  font-weight: normal;
+  padding: 50px 0;
+}
 .stats-container {
   font-size: 2em;
   text-align: center;
   display: flex;
+  flex-wrap: wrap;
   padding: 50px 0;
   bottom: 0;
   left: 0;
@@ -165,6 +181,24 @@ body > div > * {
   position: absolute;
   justify-content: space-around;
 }
+.stats-full-container {
+  height: auto;
+  top: 7vh;
+  background-color: #34495e;
+  padding-bottom: 200px;
+}
 .stats-item {}
 .stats-cars {}
 .stats-people {}
+.stats-attended {
+  width: 100%;
+  padding-bottom: 25px;
+}
+.stats-source {
+  width: 100%;
+  padding: 0 10vw;
+}
+.stats-time {
+  width: 100%;
+  padding: 0 10vw;
+}

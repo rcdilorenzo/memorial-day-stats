@@ -24,7 +24,7 @@ content model =
 
 source : String -> Html Action
 source source =
-  div [ class "btn-grid-item source-btn-grid-item red" ]
+  div [ class "btn-grid-item source-btn-grid-item purple" ]
     [ a [ onClick (updateAction source) ] [ text source ] ]
 
 
