@@ -152,13 +152,13 @@ body > div > * {
 .passenger-btn-grid-item {
   width: 33.33333%;
   font-size: 6em;
-  padding-top: 30px;
+  line-height: 30vh;
   border: 1px solid #ecf0f1;
 }
 .source-btn-grid-item {
   width: 100%;
   font-size: 2.5em;
-  padding-top: 10px;
+  line-height: 12vh;
   border: 1px solid #ecf0f1;
 }
 
@@ -183,7 +183,7 @@ h3 {
 }
 .stats-full-container {
   height: auto;
-  top: 10vh;
+  top: 7vh;
   background-color: #34495e;
   padding-bottom: 200px;
 }
