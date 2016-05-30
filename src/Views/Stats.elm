@@ -47,7 +47,6 @@ content model =
             , ( "height", "auto" )
             , ( "flex-basis", "auto" )
             ]
-          |> addValueToLabel
           |> toHtml
         ]
       , div [ class "stats-item stats-time" ]
@@ -70,7 +69,6 @@ content model =
           |> updateStyles "legend"
             [ ( "justify-content", "center" )
             ]
-          |> addValueToLabel
           |> toHtml
         ]
       ]
