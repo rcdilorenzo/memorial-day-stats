@@ -12382,53 +12382,52 @@ var _user$project$Views_Stats$content = function (model) {
 				_elm_lang$core$Native_List.fromArray(
 					[
 						_simonh1000$elm_charts$Chart$toHtml(
-						_simonh1000$elm_charts$Chart$addValueToLabel(
+						A3(
+							_simonh1000$elm_charts$Chart$updateStyles,
+							'legend',
+							_elm_lang$core$Native_List.fromArray(
+								[
+									{ctor: '_Tuple2', _0: 'width', _1: '50%'},
+									{ctor: '_Tuple2', _0: 'height', _1: 'auto'},
+									{ctor: '_Tuple2', _0: 'flex-basis', _1: 'auto'}
+								]),
 							A3(
 								_simonh1000$elm_charts$Chart$updateStyles,
-								'legend',
+								'chart',
 								_elm_lang$core$Native_List.fromArray(
 									[
+										{ctor: '_Tuple2', _0: 'background', _1: '#3498db'},
 										{ctor: '_Tuple2', _0: 'width', _1: '50%'},
-										{ctor: '_Tuple2', _0: 'height', _1: 'auto'},
-										{ctor: '_Tuple2', _0: 'flex-basis', _1: 'auto'}
+										{ctor: '_Tuple2', _0: 'height', _1: 'auto'}
 									]),
 								A3(
 									_simonh1000$elm_charts$Chart$updateStyles,
-									'chart',
+									'chart-container',
 									_elm_lang$core$Native_List.fromArray(
 										[
-											{ctor: '_Tuple2', _0: 'background', _1: '#3498db'},
-											{ctor: '_Tuple2', _0: 'width', _1: '50%'},
-											{ctor: '_Tuple2', _0: 'height', _1: 'auto'}
+											{ctor: '_Tuple2', _0: 'display', _1: 'block'},
+											{ctor: '_Tuple2', _0: 'background-color', _1: 'transparent'},
+											{ctor: '_Tuple2', _0: 'padding', _1: '0'},
+											{ctor: '_Tuple2', _0: 'display', _1: 'flex'}
 										]),
 									A3(
 										_simonh1000$elm_charts$Chart$updateStyles,
-										'chart-container',
+										'container',
 										_elm_lang$core$Native_List.fromArray(
 											[
-												{ctor: '_Tuple2', _0: 'display', _1: 'block'},
 												{ctor: '_Tuple2', _0: 'background-color', _1: 'transparent'},
 												{ctor: '_Tuple2', _0: 'padding', _1: '0'},
-												{ctor: '_Tuple2', _0: 'display', _1: 'flex'}
+												{ctor: '_Tuple2', _0: 'display', _1: 'block'},
+												{ctor: '_Tuple2', _0: 'flex-direction', _1: 'inherit'}
 											]),
-										A3(
-											_simonh1000$elm_charts$Chart$updateStyles,
-											'container',
+										A2(
+											_simonh1000$elm_charts$Chart$colors,
 											_elm_lang$core$Native_List.fromArray(
-												[
-													{ctor: '_Tuple2', _0: 'background-color', _1: 'transparent'},
-													{ctor: '_Tuple2', _0: 'padding', _1: '0'},
-													{ctor: '_Tuple2', _0: 'display', _1: 'block'},
-													{ctor: '_Tuple2', _0: 'flex-direction', _1: 'inherit'}
-												]),
+												['#3498db', '#2ecc71', '#e74c3c', '#f1c40f', '#9b59b6', '#e67e22', '#95a5a6']),
 											A2(
-												_simonh1000$elm_charts$Chart$colors,
-												_elm_lang$core$Native_List.fromArray(
-													['#3498db', '#2ecc71', '#e74c3c', '#f1c40f', '#9b59b6', '#e67e22', '#95a5a6']),
-												A2(
-													_simonh1000$elm_charts$Chart$title,
-													'Sources',
-													A2(_simonh1000$elm_charts$Chart$pie, values, labels)))))))))
+												_simonh1000$elm_charts$Chart$title,
+												'Sources',
+												A2(_simonh1000$elm_charts$Chart$pie, values, labels))))))))
 					])),
 				A2(
 				_elm_lang$html$Html$div,
@@ -12439,44 +12438,43 @@ var _user$project$Views_Stats$content = function (model) {
 				_elm_lang$core$Native_List.fromArray(
 					[
 						_simonh1000$elm_charts$Chart$toHtml(
-						_simonh1000$elm_charts$Chart$addValueToLabel(
+						A3(
+							_simonh1000$elm_charts$Chart$updateStyles,
+							'legend',
+							_elm_lang$core$Native_List.fromArray(
+								[
+									{ctor: '_Tuple2', _0: 'justify-content', _1: 'center'}
+								]),
 							A3(
 								_simonh1000$elm_charts$Chart$updateStyles,
-								'legend',
+								'chart-elements',
 								_elm_lang$core$Native_List.fromArray(
 									[
-										{ctor: '_Tuple2', _0: 'justify-content', _1: 'center'}
+										{ctor: '_Tuple2', _0: 'background-color', _1: '#95a5a6'}
 									]),
 								A3(
 									_simonh1000$elm_charts$Chart$updateStyles,
-									'chart-elements',
+									'chart-container',
 									_elm_lang$core$Native_List.fromArray(
 										[
-											{ctor: '_Tuple2', _0: 'background-color', _1: '#95a5a6'}
+											{ctor: '_Tuple2', _0: 'display', _1: 'block'},
+											{ctor: '_Tuple2', _0: 'background-color', _1: 'transparent'},
+											{ctor: '_Tuple2', _0: 'padding', _1: '0'}
 										]),
 									A3(
 										_simonh1000$elm_charts$Chart$updateStyles,
-										'chart-container',
+										'container',
 										_elm_lang$core$Native_List.fromArray(
 											[
-												{ctor: '_Tuple2', _0: 'display', _1: 'block'},
 												{ctor: '_Tuple2', _0: 'background-color', _1: 'transparent'},
-												{ctor: '_Tuple2', _0: 'padding', _1: '0'}
+												{ctor: '_Tuple2', _0: 'padding', _1: '0'},
+												{ctor: '_Tuple2', _0: 'display', _1: 'block'},
+												{ctor: '_Tuple2', _0: 'flex-direction', _1: 'inherit'}
 											]),
-										A3(
-											_simonh1000$elm_charts$Chart$updateStyles,
-											'container',
-											_elm_lang$core$Native_List.fromArray(
-												[
-													{ctor: '_Tuple2', _0: 'background-color', _1: 'transparent'},
-													{ctor: '_Tuple2', _0: 'padding', _1: '0'},
-													{ctor: '_Tuple2', _0: 'display', _1: 'block'},
-													{ctor: '_Tuple2', _0: 'flex-direction', _1: 'inherit'}
-												]),
-											A2(
-												_simonh1000$elm_charts$Chart$title,
-												'Attendance',
-												A2(_simonh1000$elm_charts$Chart$vBar, attendanceValues, attendanceLabels))))))))
+										A2(
+											_simonh1000$elm_charts$Chart$title,
+											'Attendance',
+											A2(_simonh1000$elm_charts$Chart$vBar, attendanceValues, attendanceLabels)))))))
 					]))
 			]));
 };
